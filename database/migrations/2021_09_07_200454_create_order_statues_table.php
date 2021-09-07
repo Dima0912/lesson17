@@ -13,8 +13,8 @@ class CreateOrderStatuesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('order_statues')) {
-        Schema::create('order_statues', function (Blueprint $table) {
+        if (!Schema::hasTable('order_statuses')) {
+        Schema::create('order_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('name', 15)->unique();
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateOrderStatuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_statues');
+        Schema::dropIfExists('order_statuses');
     }
 }

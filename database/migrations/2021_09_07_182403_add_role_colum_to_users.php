@@ -16,7 +16,7 @@ class AddRoleColumToUsers extends Migration
         if (Schema::hasTable('users')) {
             Schema::table('users', function (Blueprint $table) {
                 if (!Schema::hasColumn('users', 'role_id')) {
-                    $table->insignedBigInteger('role_id')->after('id');
+                    $table->unsignedBigInteger('role_id')->after('id');
 
                     $table->foreign('role_id')
                         ->references('id')
