@@ -9,8 +9,5 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function image()
-    {
-        return $this->hasOne(Image::class);
-    }
+    
 }
