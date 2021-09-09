@@ -3,8 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
+use Faker\Generator\e164PhoneNumber;
 
 class UserFactory extends Factory
 {
@@ -22,11 +25,21 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $role = Role::where(
+            'name',
+            '=',
+            Config::get('constants.db.roles.customer')
+        )->first();
         return [
+            
             'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'surname' => $this->faker->lastName,
+            'birtdate' => $this->faker->dateTimeBetween('-70 years', '-18 years')->format('Y-m-d'),
+            'role_id' => $role->id,
+            'phone' => $this->faker->e164PhoneNumber,
+            'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => $this->faker->password(8),
             'remember_token' => Str::random(10),
         ];
     }
