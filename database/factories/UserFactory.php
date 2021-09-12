@@ -4,10 +4,10 @@ namespace Database\Factories;
 
 use App\Models\User;
 use App\Models\Role;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 use Faker\Generator\e164PhoneNumber;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserFactory extends Factory
 {
@@ -28,8 +28,9 @@ class UserFactory extends Factory
         $role = Role::where(
             'name',
             '=',
-            Config::get('constants.db.roles.customer')
+            config::get('constants.db.roles.customer')
         )->first();
+       
         return [
             
             'name' => $this->faker->name(),
@@ -42,6 +43,7 @@ class UserFactory extends Factory
             'password' => $this->faker->password(8),
             'remember_token' => Str::random(10),
         ];
+        dd($role);
     }
 
     /**
@@ -51,7 +53,9 @@ class UserFactory extends Factory
      */
     public function unverified()
     {
+      
         return $this->state(function (array $attributes) {
+            
             return [
                 'email_verified_at' => null,
             ];

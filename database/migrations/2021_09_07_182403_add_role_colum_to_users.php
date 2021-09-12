@@ -18,9 +18,7 @@ class AddRoleColumToUsers extends Migration
                 if (!Schema::hasColumn('users', 'role_id')) {
                     $table->unsignedBigInteger('role_id')->after('id');
 
-                    $table->foreign('role_id')
-                        ->references('id')
-                        ->on('roles');
+                    $table->foreign('role_id')->references('id')->on('roles');
                 }
             });
         }
