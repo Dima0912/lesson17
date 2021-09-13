@@ -13,8 +13,8 @@ class CreateOrderTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('order')) {
-            Schema::create('order', function (Blueprint $table) {
+        if (!Schema::hasTable('orders')) {
+            Schema::create('orders', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('status_id')->constrained('order_statuses');
                 $table->string('name', 35);
@@ -37,8 +37,8 @@ class CreateOrderTable extends Migration
      */
     public function down()
     {
-        if (Schema::hasTable('order')) {
-            Schema::dropIfExists('order');
+        if (Schema::hasTable('orders')) {
+            Schema::dropIfExists('orders');
         }
     }
 }

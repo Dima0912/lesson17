@@ -4,10 +4,10 @@ return [
     'db' => [
         'roles' => [
             'admin' => 'Admin',
-            'costomer' => 'Customer',
+            'customer' => 'Customer',
         ],
 
-        'order-status' => [
+        'order_status' => [
             'in_process' => 'In process',
             'paid' => 'Paid',
             'completed' => 'Completed'

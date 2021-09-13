@@ -15,10 +15,11 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $roles = Config::get('constabts.db.roles');
+        $roles = Config::get('constants.db.roles');
+    
         if (is_array($roles)) {
             foreach ($roles as $key => $role) {
-                Role::create(['name => $role']);
+                Role::create(['name' => $role]);
             }
         }
     }

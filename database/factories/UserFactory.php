@@ -28,14 +28,14 @@ class UserFactory extends Factory
         $role = Role::where(
             'name',
             '=',
-            config::get('constants.db.roles.customer')
+            Config::get('constants.db.roles.customer')
         )->first();
        
         return [
             
             'name' => $this->faker->name(),
             'surname' => $this->faker->lastName,
-            'birtdate' => $this->faker->dateTimeBetween('-70 years', '-18 years')->format('Y-m-d'),
+            'birthdate' => $this->faker->dateTimeBetween('-70 years', '-18 years')->format('Y-m-d'),
             'role_id' => $role->id,
             'phone' => $this->faker->e164PhoneNumber,
             'email' => $this->faker->unique()->safeEmail,
@@ -43,7 +43,7 @@ class UserFactory extends Factory
             'password' => $this->faker->password(8),
             'remember_token' => Str::random(10),
         ];
-        dd($role);
+        
     }
 
     /**
