@@ -10,13 +10,13 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function collator_get_sort_key
+    public function collator_get_sort_key()
     {
         return $this->belongsTo(Category::class);
     }
 
     public function orders()
     {
-        return $this_>belongsToMany(Order::class);
+        return $this->belongsToMany(Order::class);
     }
 }
