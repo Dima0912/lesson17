@@ -27,3 +27,7 @@ Route::get('products/{products}', [\App\Http\Controllers\ProductsController::cla
 
 Route::get('categories', [\App\Http\Controllers\CategoriesController::class, 'index'])->name('categories');
 Route::get('categories/{category}', [\App\Http\Controllers\CategoriesController::class, 'show'])->name('categories.show');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
