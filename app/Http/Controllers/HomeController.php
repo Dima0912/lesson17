@@ -13,8 +13,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $products = Category::query()->limit(10)->with('category')->inRandomOrder()->get();
-        $categories = Product::query()->limit(4)->inRandomOrder()->get();
+        $products = Product::query()->limit(10)->with('category')->inRandomOrder()->get();
+        $categories = Category::query()->limit(4)->inRandomOrder()->get();
 
         return view('home', compact('categories', 'products'));
     }
