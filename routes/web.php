@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,14 +21,33 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('products', [\App\Http\Controllers\ProductsController::class, 'index'])->name('products');
-Route::get('products/{products}', [\App\Http\Controllers\ProductsController::class, 'show'])->name('products.show');
+Route::get('products', 'ProductsController@index')->name('products');
+Route::get('products/{products}', 'ProductsController@show')->name('products.show');
 
-Route::get('categories', [\App\Http\Controllers\CategoriesController::class, 'index'])->name('categories');
-Route::get('categories/{category}', [\App\Http\Controllers\CategoriesController::class, 'show'])->name('categories.show');
+Route::get('categories', 'CategoriesController@index')->name('categories');
+Route::get('categories/{category}', 'CategoriesController@show')->name('categories.show');
 
-Auth::routes();
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
+    Route::get('/', 'BoardController')->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::name('orders')->group(function () {
+        Route::get('orders', 'OrdersController@index');
+        Route::get('orders/{orders}/edit', 'OrdersController@edit')->name('.edit');
+    });
+
+    Route::name('products')->group(function () {
+        Route::get('products', 'ProductsController@index');
+        Route::get('products/{product}/edit', 'ProductsController@edit')->name('.edit');
+        Route::get('products/{product}/update', 'ProductsController@update')->name('.update');
+        Route::get('products/{product}', 'ProductsController@destroy')->name('.delete');
+        Route::get('products/new', 'ProductsController@create')->name('.create');
+        Route::post('products', 'ProductsController@store')->name('.store');
+    });
+});
+
+
+
+Route::namespace('Account')->prefix('account')->name('account.')->middleware(['auth'])->group(function () {
+});
