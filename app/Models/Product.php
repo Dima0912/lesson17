@@ -28,7 +28,7 @@ protected $fillable = [
         return $this->hasMany(ProductImage::class);
     }
 
-    public function collator_get_sort_key()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
@@ -36,5 +36,10 @@ protected $fillable = [
     public function orders()
     {
         return $this->belongsToMany(Order::class);
+    }
+
+    public function getPrice()
+    {
+        return round(is_null($this->discount) ? $this->price : ($this->price - ($this->price * ($this->discount / 100))));
     }
 }
