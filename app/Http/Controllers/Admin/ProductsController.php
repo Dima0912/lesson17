@@ -30,8 +30,6 @@ class ProductsController extends Controller
         $category = Category::find($fields['category']);
         
         $images = !empty($fields['images']) ? $fields['images'] : [];
-        unset($fields['category']);
-        unset($fields['images']);
 
         $product = $category->products()->create($fields);
 

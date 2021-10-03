@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
+        <div class="collpase navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="navbar-brand" href="{{ url ('admin) }}">Admin panel:</a>
@@ -19,7 +20,7 @@
                 </a>
                 <div class="dropdown-menu droppdown-menu-left" aria-labelledby="adminDropdownProducts">
                     <a class="dropdown-item" href="{{ route('admin.products') }}">{{ __('Products List') }}</a>
-                    <a class="dropdown-item" href="{{ route('admin.products.create') }}">{{ __('New Product') }}</a>
+                    <a class="dropdown-item" href="{{ route('admin.products.new') }}">{{ __('New Product') }}</a>
                 </div>
              </li>
          </ul>

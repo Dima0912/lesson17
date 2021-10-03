@@ -14,7 +14,7 @@ class ImageService implements ImageServiceInterface
     public static function upload($image)
     {
         if (is_null($image)) {
-            return '.';
+            return '';
         }
 
         if (is_string($image)) {
@@ -25,7 +25,7 @@ class ImageService implements ImageServiceInterface
             $imageData = explode('.', $image);
         }
 
-        $imagePath = implode('/', str_split(Str::random(8), 2))
+        $imagePath = 'public/' . implode('/', str_split(Str::random(8), 2))
         . '/'
         . Str::random(16)
         . '.'

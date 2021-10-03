@@ -6,7 +6,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Config;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Role;
+
 
 class User extends Authenticatable
 {
@@ -19,10 +22,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'suname',
+        'surname',
         'phone',
         'email',
-        'birtdate',
+        'birthdate',
         'password',
     ];
 
@@ -48,5 +51,16 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function is_admin()
+    {
+        
+        $adminRole = Role::wgere(
+            'name',
+            '=',
+            Config::get('constants.db.roles.admin')
+        );
+        return $user->roles_id === $adminRole->id;
     }
 }
