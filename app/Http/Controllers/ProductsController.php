@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -16,6 +16,6 @@ class ProductsController extends Controller
 
     public function show(Product $product)
     {
-
+        return view('products.show', compact('product'));
     }
 }

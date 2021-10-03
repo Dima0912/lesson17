@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Service\ImageService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -11,17 +12,17 @@ class Product extends Model
 {
     use HasFactory;
 
-protected $fillable = [
-    'id',
-    'title',
-    'description',
-    'short_description',
-    'SKU',
-    'price',
-    'discount',
-    'in_stock',
-    'thumbnail'
-];
+    protected $fillable = [
+        'id',
+        'title',
+        'description',
+        'short_description',
+        'SKU',
+        'price',
+        'discount',
+        'in_stock',
+        'thumbnail'
+    ];
 
     public function gallery()
     {
@@ -40,6 +41,16 @@ protected $fillable = [
 
     public function getPrice()
     {
-        return round(is_null($this->discount) ? $this->price : ($this->price - ($this->price * ($this->discount / 100))));
+        $price = round(is_null($this->discount) ? $this->price : ($this->price - ($this->price * ($this->discount / 100))));
+        $price = round($price, 2);
+        return $price < 0 ? 0 : $price;
+    }
+
+    public function setThumbnailAttribute($image)
+    {
+        if (!empty($this->attributes['thumbnail'])) {
+            ImageService::remove($this->attributes['thumbnail']);
+        }
+        $this->attributes['thumbnail'] = ImageService::upload($image);
     }
 }
