@@ -12,7 +12,7 @@
                 </a>
                 <div class="dropaown-menu dropdown-menu-left" aria-labelledby="adminDropdownOrders">
                     <a class="dropdown-item" href="{{ route('admin.orders') }}">{{ __('Orders List') }}</a>
-                    <a class="dropdown-item" href="{{ route('admin.orders') }}">{{ __('New Order') }}</a>
+                    <a class="dropdown-item" href="{{ route('admin.orders.new') }}">{{ __('New Order') }}</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

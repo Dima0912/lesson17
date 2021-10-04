@@ -56,11 +56,6 @@ class User extends Authenticatable
     public function is_admin()
     {
         
-        $adminRole = Role::wgere(
-            'name',
-            '=',
-            Config::get('constants.db.roles.admin')
-        );
-        return $user->roles_id === $adminRole->id;
+        return $this->role->name === config('constants.db.roles.admin');
     }
 }
