@@ -31,6 +31,7 @@ class LoginController extends Controller
 
     protected function redirectPath()
     {
+      
         return is_admin(auth()->user()) ? route('admin.home') : $this->redirectTo;
     }
     /**

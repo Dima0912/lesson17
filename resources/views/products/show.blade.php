@@ -15,7 +15,7 @@
         @endif
     </div>
     <div class="col-md-6">
-        <p>Price: {{ $product->price }}$</p>
+        <p>Price: {{ $product->getPrice() }}$</p>
         <p>SKU: {{ $product->SKU }}$</p>
         <p>In stock: {{ $product->in_stock }}</p>
         <p>Reting: {{ $product->averageRating}}</p>

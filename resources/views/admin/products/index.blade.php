@@ -30,21 +30,25 @@
                         <td class="text-center" scope="col">{{ $product->title }}</td>
                         <td class="text-center" scope="col">{{ $product->in_stock }}</td>
                         <td class="text-center" scope="col">@include('categories.parts.category.view')</td>
-                        <td class="text-center" scope="col">{{ $product->id }}</td>
                         <td class="text-center" scope="col">
+                            @each ('categories.parts.product_category' [$product->category], 'category')
+                            </td>
+                            <td class="text-center" scope="col">
                             <a href="{{ route('admin.products.edit', $product)}}" class="bth btn-info form-control">Edit</a>
-                            <form action="{{ ('route.produts.delete', $product) }}" method="POST">
+                            <form action="{{ ('route.products.delete', $product) }}" method="POST">
                                 @scrf
                                 @method('DELETE')
                                 <input type="submit" class="btn-danger form-control" value="Remove">
                             </form>
                             <a href="{{ route('products.show', $product) }}" class="btn btn-outline-success form-control">View</a>
-                        </td>
+                            </td> 
                     </tr>
+                    @endforeach
                 </tbody>
-                @endforeach
+               
             </table>
-            {{ $product->links() }}
+            {{ $products->links() }}
         </div>
     </div>
 </div>
+@endsection
