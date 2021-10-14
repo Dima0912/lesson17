@@ -8,6 +8,18 @@ $.ajaxSetup({
 
 $(document).on('click', 'remove-product-image', function(e) {
   e.preventDefault();
+  let $btn = $(this);
+  $.ajax( {
+   url: $btn.data('route'),
+   type: 'DELETE',
+   dataType: 'json',
+   success: function(data) {
+     console.log(data);
+   },
+   error: function(data) {
+     console.log('Error: ', data);
+   }
+       });
 
-});
+    });
 });

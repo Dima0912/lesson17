@@ -28,6 +28,13 @@ class ProductsController extends Controller
         return view('admin/products/new', compact('categories'));
     }
 
+    public function edit(Product $product)
+    {
+        $categories = Category::all(['id', 'name'])->toArray();
+
+        return view('admin/products/edit', compact('product', 'categories'));
+    }
+
     public function store(CreateProductRequest $request)
     {
         $fields = $request->validated();
