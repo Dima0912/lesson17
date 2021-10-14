@@ -20,7 +20,7 @@
                     <tbody>
                     @foreach($order->products as $product)
                         <tr>
-                            <td><a href="{{route('product.show', $product->id)}}">{{$product->title}}</a></td>
+                            <td><a href="{{route('products.show', $product->id)}}">{{$product->title}}</a></td>
                             <td>{{$product->pivot->quantity}}</td>
                             <td>{{$product->pivot->single_price}}</td>
                         </tr>

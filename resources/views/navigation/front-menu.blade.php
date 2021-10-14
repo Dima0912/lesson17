@@ -11,9 +11,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('products') }}">{{ __('Products') }}</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('categories') }}">{{ __('Categories') }}</a>
+            </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            @grapheme_substr
+            
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
@@ -22,14 +25,10 @@
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register')}}</a>
             </li>
             @endif
-            @else
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('cart') }}">
-                    {{ __('Cart') }} - <strong>{{ Cart::instance('cart')->count() }}</strong>
-                </a>
-            </li>
-            <li class="nav-item dropdown"></li> class="nav-link dropdown-toggle" 
+            
+           
         </ul>
+        
     </div>
     </div>
 </nav> 

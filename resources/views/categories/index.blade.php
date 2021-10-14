@@ -21,7 +21,7 @@
                                     <tbody>
                                     @foreach($categories as $category)
                                         <tr>
-                                            <td class="text-center"><a href="{{route('category.show', $category->id)}}">{{$category->name}}</a></td>
+                                            <td class="text-center"><a href="{{route('categories.show', $category->id)}}">{{$category->name}}</a></td>
                                             <td class="text-center"> {{$category->products_count }}</td>
                                         </tr>
                                     @endforeach

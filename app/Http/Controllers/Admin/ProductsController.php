@@ -6,13 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
+use App\Services\Contracts\ProductImagesServiceInterface;
+use App\Services\ImageService;
+use App\Services\ProductImagesService;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
     public function index()
     {
-        $product = Product::with('category')->paginate(10);
+        $products = Product::with('category')->paginate(10);
 
         return view('admin/products/index', compact('products'));
     }
@@ -27,11 +31,13 @@ class ProductsController extends Controller
     public function store(CreateProductRequest $request)
     {
         $fields = $request->validated();
-        $category = Category::find($fields['category']);
-        
         $images = !empty($fields['images']) ? $fields['images'] : [];
+        $category = Category::find($fields['category']);
+
 
         $product = $category->products()->create($fields);
-
-    }
+        ProductImagesService::attach ($product, $images);
+      
+        return redirect()->route('admin/products');
+   }
 }

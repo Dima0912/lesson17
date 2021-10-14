@@ -20,7 +20,7 @@
                 </a>
                 <div class="dropdown-menu droppdown-menu-left" aria-labelledby="adminDropdownProducts">
                     <a class="dropdown-item" href="{{ route('admin.products') }}">{{ __('Products List') }}</a>
-                    <a class="dropdown-item" href="{{ route('admin.products') }}">{{ __('New Product') }}</a>
+                    <a class="dropdown-item" href="{{ route('admin.products.create') }}">{{ __('New Product') }}</a>
                 </div>
              </li>
          </ul>

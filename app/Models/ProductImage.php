@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use App\Service\ImageService;
+use App\Services\ImageService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductImage extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['path'];
 
     public function products()
     {
@@ -20,8 +22,10 @@ class ProductImage extends Model
         return $this->hasMany(ProductImage::class);
     }
 
-    public function setThumbnailAttribute($image)
+    public function setPathAttribute($image)
     {
-        $this->attributes['thumbnail'] = ImageService::upload($image);
+        $this->attributes['path'] = ImageService::upload($image);
     }
+
+    
 }

@@ -14,8 +14,8 @@ class ImageServeceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            \App\Services\Contracts\ImageServiceInterface::class,
-            \App\Service\ImageService::class
+            
+            \App\Services\ImageService::class
         );
     }
 

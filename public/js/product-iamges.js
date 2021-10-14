@@ -6,4 +6,8 @@ $.ajaxSetup({
       }
 });
 
+$(document).on('click', 'remove-product-image', function(e) {
+  e.preventDefault();
+
+});
 });

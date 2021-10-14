@@ -24,10 +24,12 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('products', 'ProductsController@index')->name('products');
-Route::get('products/{products}', 'ProductsController@show')->name('products.show');
+Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 
 Route::get('categories', 'CategoriesController@index')->name('categories');
 Route::get('categories/{category}', 'CategoriesController@show')->name('categories.show');
+
+Route::delete('ajax/productImage/{image_id}', 'ProductImageController@destroy')->name('ajax.products.images.delete');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', 'BoardController')->name('home');
@@ -40,8 +42,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth', 
     Route::name('products')->group(function () {
         Route::get('products', 'ProductsController@index');
         Route::get('products/{product}/edit', 'ProductsController@edit')->name('.edit');
-        Route::get('products/{product}/update', 'ProductsController@update')->name('.update');
-        Route::get('products/{product}', 'ProductsController@destroy')->name('.delete');
+        Route::put('products/{product}/update', 'ProductsController@update')->name('.update');
+        Route::delete('products/{product}', 'ProductsController@destroy')->name('.delete');
         Route::get('products/new', 'ProductsController@create')->name('.create');
         Route::post('products', 'ProductsController@store')->name('.store');
     });

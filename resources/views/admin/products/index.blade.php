@@ -6,7 +6,7 @@
             <h3 class="text-center">{{ __('Products') }}</h3>
         </div>
         <div class="col-md-12">
-            if (sessiom('status'))
+            @if (session('status'))
             <div class="alert alert-success" role="alert">
                 {{ session('status') }}
             </div>
@@ -27,16 +27,15 @@
                     @foreach($products as $product)
                     <tr>
                         <td class="text-center" scope="col">{{ $product->id }}</td>
+                        <td class="text-center" scope="col"><img src="{{ Storage::url($product->thumbnail) }}" width="100" height="100" alt=""></td>
                         <td class="text-center" scope="col">{{ $product->title }}</td>
                         <td class="text-center" scope="col">{{ $product->in_stock }}</td>
-                        <td class="text-center" scope="col">@include('categories.parts.category.view')</td>
                         <td class="text-center" scope="col">
-                            @each ('categories.parts.product_category' [$product->category], 'category')
+                        @include('categories.parts.category_view', ['category' => $product->category])</td>
                             </td>
                             <td class="text-center" scope="col">
                             <a href="{{ route('admin.products.edit', $product)}}" class="bth btn-info form-control">Edit</a>
-                            <form action="{{ ('route.products.delete', $product) }}" method="POST">
-                                @scrf
+                                @csrf
                                 @method('DELETE')
                                 <input type="submit" class="btn-danger form-control" value="Remove">
                             </form>

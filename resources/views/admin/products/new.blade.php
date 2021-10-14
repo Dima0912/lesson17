@@ -1,5 +1,5 @@
-@extends
-@sedtion('content')
+@extends('layouts.app')
+@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -11,8 +11,8 @@
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
-                    @foreach (@errors->all() as error)
-                    <li>{{ $error }}</li>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }} </li>
                     @endforeach
                 </ul>
             </div>
@@ -23,64 +23,61 @@
                 @csrf
                 @method('POST')
                 <div class="form-group row">
-                    <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
+                    <label for="title" class="col-md-4 col-from-label text-md-right">{{ __('Title') }}</label>
                     <div class="col-md-6">
-                        <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="title" autofocus>
+                        <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autofocus>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="SKU" class="col-md-4 col-form-label text-md-right">{{__('SKU')}}</label>
+                    <label for="SKU" class="col-md-4 col-from-label text-md-right">{{ __('SKU') }}</label>
                     <div class="col-md-6">
-                        <input id="SKU" type="{{ $product->SKU }}" class="form-control @error('SKU') is-invalid @enderror" name="SKU" value="{{ old('SKU') }}" autocomplete="SKU" autofocus>
+                        <input id="SKU" type="text" class="form-control @error('SKU') is-invalid @enderror" name="SKU" value="{{ old('SKU') }}" autocomplete="SKU" autofocus>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="price" class="col-md-4 col-from-label text-md-reght">{{ __("Price") }}</label>
+                    <label for="price" class="col-md-4 col-from-label text-md-right">{{ __('Price') }}</label>
                     <div class="col-md-6">
                         <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" autocomplete="price" autofocus>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="discount" class="col-md-6 col-form-label text-md-right">{{ __('Discount') }}</label>
+                    <label for="discount" class="col-md-4 col-from-label text-md-right">{{ __('Discount') }}</label>
                     <div class="col-md-6">
                         <input id="discount" type="text" class="form-control @error('discount') is-invalid @enderror" name="discount" value="{{ old('discount') }}" autocomplete="discount" autofocus>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="in_stock" class="col-md-6 col-form-label text-md-right">{{ __('In Stock('Quantity')') }}</label>
+                    <label for="in_stock" class="col-md-4 col-from-label text-md-right">{{ __('In Stock (Quantity)') }}</label>
                     <div class="col-md-6">
                         <input id="in_stock" type="text" class="form-control @error('in_stock') is-invalid @enderror" name="in_stock" value="{{ old('in_stock') }}" autocomplete="in_stock" autofocus>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="description" class="col-md-6 col-form-label text-md-right">{{ __('Description') }}</label>
+                    <label for="description" class="col-md-4 col-from-label text-md-right">{{ __('Description') }}</label>
                     <div class="col-md-6">
-                        <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
+                        <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="short_description" class="col-md-6 col-form-label text-md-right">{{ __('Short Description') }}</label>
+                    <label for="short_description" class="col-md-4 col-from-label text-md-right">{{ __('Short_description') }}</label>
                     <div class="col-md-6">
-                        <textarea name="short_description" class="form-control @error('short_description') is-invalid @enderror" id="short_description" cols="30" rows="10">{{ old('short_description') }}</textarea>
+                        <textarea id="short_description" type="text" class="form-control @error('short_description') is-invalid @enderror" name="short_description" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="category" class="col-md-6 col-form-label text-md-right">{{ __('Categories') }}</label>
+                    <label for="categories" class="col-md-4 col-from-label text-md-right">{{ __('Categories')}}</label>
                     <div class="col-md-6">
-                        <select name="categories" id="categories" class="form-control @error('categories') is-invalid @enderror" multiple>
-                            @foreach($categories as category)
-                            <option value="{{ $category['id'] }}" {{in_array($category['id'], $product_categories) ? 'selected' : ''}}>{{ $categories['name'] }}</option>
+                        <select name="category" id="category" class="form-control @error('category') is-invalid @enderror">
+                            @foreach($categories as $category)
+                            <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="thumbmail" class="col-md-4 col-form-label text-md-roght">{{ __('Thumbmail') }}</label>
+                    <label for="thumbnail" class="col-md-4 col-form-label text-md-right">{{ __('Thumbnail')}}</label>
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-6">
-                                <img scr="{{ Storage::url($product->thumbnail) }}" class="card-img-top" style="max-width: 80%; margin: 0 auto; display: block;">
-                            </div>
                             <div class="col-md-6">
                                 <input type="file" name="thumbnail" id="thumbnail">
                             </div>
@@ -88,19 +85,11 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
+                    <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Images')}}</label>
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="row">
-                                    @foreach($product->galleryImages as $image)
-                                    @if(Storage::has($image->path))
-                                    <div class="col-md-12 d-flex justify-content-center align-items-center">
-                                        <img src="{{ Storage::url($image->id) }}" <a data-image_id="{{ $image->id }}" data-route="{{ route('ajax.products.images.delete', $image->id) }}" class="btn btn-danger remove-product-image"></a>
-                                    </div>
-                                    @endif
-                                    @endforeach
-                                </div>
+                                <div class="row images-wrapper"></div>
                             </div>
                             <div class="col-md-12">
                                 <input type="file" name="images[]" id="images" multiple>
@@ -109,15 +98,24 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-10 text-right">
+                    <div class="col-md-10-reght">
                         <input type="submit" class="btn btn-info" value="Update Product">
+                        </div>
                     </div>
-                </div>
             </form>
         </div>
     </div>
 </div>
-<script src="https//ajax.googleleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script src="https//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.9.1/jquery.-validate.js"></script>
-<script src="{{ asset('js/product-iamges.js') }}" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $('#thumbnail').change(function () {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    $('#thumbnail-preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
+        });
+    </script>
 @endsection

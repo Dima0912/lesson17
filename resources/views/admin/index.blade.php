@@ -1,4 +1,4 @@
-@extends('loyouts.app')
+@extends('layouts.app')
 @section('contact')
 <div class="container">
     <div class="row juctify-content-center">

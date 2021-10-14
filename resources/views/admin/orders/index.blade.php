@@ -23,7 +23,7 @@
                                     <tbody>
                                     @foreach($orders as $order)
                                         <tr>
-                                            <td class="text-center"><a href="{{route('admin.orders.show', $order->id)}}">{{$order->id}}</a></td>
+                                            <td class="text-center"><a href="{{ route('admin.orders.show', $order->id) }}">{{$order->id}}</a></td>
                                             <td class="text-center"> {{$order->created_at}}</td>
                                             <td class="text-center"> {{$order->status->name}}</td>
                                             <td class="text-center"> {{$order->total}}</td>

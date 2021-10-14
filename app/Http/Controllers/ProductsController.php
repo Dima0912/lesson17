@@ -10,14 +10,16 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = Product::query()->with('category')->inRandomOrder()->first();
-        return view('products/index', compact('products'));
+        $products = Product::query()->with('category')->inRandomOrder()->paginate();
+        
+        return view('products.index', compact('products'));
+       
     }
 
-    public function show(int $id)
+    public function show(Product $product)
     {
        
-        $product = Product::find($id);
+       
         return view('products.show', compact('product'));
     }
 }

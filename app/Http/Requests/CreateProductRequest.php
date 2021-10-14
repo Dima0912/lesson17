@@ -41,7 +41,7 @@ class CreateProductRequest extends FormRequest
             'in_stock' => ['required', 'numeric'],
             'thumbnail' => ['required', 'image:jpeg.png'],
             'images.*' => ['image:jpeg.png'],
-            'category_id' => ['required', 'numeric']
+            'category' => ['required', 'numeric']
         ];
     }
 }

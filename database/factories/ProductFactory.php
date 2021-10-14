@@ -24,14 +24,18 @@ class ProductFactory extends Factory
     {
         return [
             'title' => $this->faker->unique()->sentence(rand(2,5)),
-            'description' => $this->faker->sentence(12, true),
-            'short_description' => $this->faker->sentence(rand(1,3), true),
             'SKU' => Person::taxId(),
             'price' => $this->faker->randomFloat(2, 5, 200),
             'discount' => $this->faker->numberBetween(0, rand(5, 25)),
             'in_stock' => $this->faker->numberBetween(0, rand(2,10)),
+            'description' => $this->faker->sentence(12, true),
+            'short_description' => $this->faker->sentence(rand(1,3), true),
             'thumbnail' => $this->faker->imageUrl(400, 600)
 
+           
+            
+            
+            
         ];
     }
 }

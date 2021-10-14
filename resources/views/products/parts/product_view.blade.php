@@ -1,14 +1,15 @@
 <div class="col-md-4">
     <div class="card mb-4 shadow-sm">
-        @if(Storage::has($product->thumbnail))
-            <img src="{{Storage::url($product->thumbnail)}}" alt="" class="card-img-top" height="225">
-        @endif
+   
+   
+            <img src="{{$product->thumbnail}}" height="400" class="card-img-top" height="225">
+        
         <div class="card-body">
             <p class="card-title" style="height: 20px;">{{__($product->title)}}</p>
             <hr>
-            <p class="card-text" style="height: 150px;">{{__($product->short_description)}}</p>
+            <p class="card-text" style="height: 150px;">{{__($product->short_description) }}</p>
             <div class="d-flex justify-content-start align-items-center">
-                <small class="text-muted mr-2">Category:</small>
+                <small class="text-muted mr-2">Categories:</small>
                 <div class="btn-group align-self-end">
                     @if(isset($product->category))
                         @include('categories.parts.category_view', ['category' => $product->category] )
@@ -24,5 +25,4 @@
             </div>
         </div>
     </div>
-
 </div>

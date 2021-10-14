@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Service;
+namespace App\Services;
 
-
+use App\Services\Contracts\ImageServiceInterface;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-use App\Services\Contracts\ImageServiceInterface;
+
 
 class ImageService implements ImageServiceInterface
 {

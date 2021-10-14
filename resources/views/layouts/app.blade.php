@@ -75,8 +75,7 @@
                 </div>
             </div>
         </nav>
-       
-        
+        @include('navigation.front-menu')
         @if(is_admin(Auth::user()) && (Request::is('admin/*') || Request::is('admin')))
            @include('navigation.admin-menu')
         @endif
