@@ -67,7 +67,7 @@
                 <div class="form-group row">
                     <label for="categories" class="col-md-4 col-form-label text-md-right">{{ __('Categories') }}</label>
                     <div class="col-md-6">
-                        <select name="category" id="category" class="form-control @error('category') is-invalid @enderror" multiple>
+                        <select name="category_id" id="category" class="form-control @error('category') is-invalid @enderror" multiple>
                             @foreach($categories as $category)
                             <option value="{{ $category['id'] }}" {{ ($category['id'] === $product->category->id) ? 'selected' : ''}}> {{ $category['name'] }} </option>
                             @endforeach

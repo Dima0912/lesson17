@@ -44,13 +44,32 @@ class ProductsController extends Controller
 
 
         $product = $category->products()->create($fields);
-        ProductImagesService::attach ($product, $images);
-      
+        ProductImagesService::attach($product, $images);
+
         return redirect()->route('admin/products');
-   }
+    }
 
-   public function update(UpdateProductRequest $request, Product $product) 
-   {
+    public function update(UpdateProductRequest $request, Product $product)
+    {
+        $product->update($request->validated());
 
-   }
+        if (!empty($request->images)) {
+            ProductImagesService::attach($product, $request->images);
+        }
+
+        return redirect()->back()->with("status", "The product {$product->id} was successfully update!");
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->orders()->detach();
+        $images = $product->gallery()->get();
+        if($images->count() > 0) {
+            $product->gallery()->detach();
+            $images->each()->delete();
+        }
+        $product->delete();
+
+        return redirect()->back()->with("status", "The product {$product->id} was successfuly removed!");
+    }
 }

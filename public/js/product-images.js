@@ -9,6 +9,9 @@ $.ajaxSetup({
 $(document).on('click', 'remove-product-image', function(e) {
   e.preventDefault();
   let $btn = $(this);
+  
+  alert('click');
+
   $.ajax( {
    url: $btn.data('route'),
    type: 'DELETE',
