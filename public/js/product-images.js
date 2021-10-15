@@ -17,7 +17,7 @@ $(document).on('click', 'remove-product-image', function(e) {
    type: 'DELETE',
    dataType: 'json',
    success: function(data) {
-     console.log(data);
+     $btn.parent().remove();
    },
    error: function(data) {
      console.log('Error: ', data);

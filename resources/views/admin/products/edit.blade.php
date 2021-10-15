@@ -99,7 +99,7 @@
                                     @if(Storage::has($image->path))
                                     <div class="col-md-12 d-flex justify-content-center align-items-center">
                                         <img src="{{ Storage::url($image->path) }}" class="card-img-top">
-                                        <a data-image_id="{{ $image->id }}" data-route="{{ route('ajax.products.images.delete', $image->id) }}" class="btn btn-danger remove-product-image">x</a>
+                                        <a data-image_id="{{ $image->id }}" data-route="{{ route('ajax.products.images.delete', $image->id) }}" class="btn btn-danger remove-product-image">X</a>
                                     </div>
                                     @endif
                                     @endforeach
@@ -122,5 +122,5 @@
 </div>
 <script src="https//ajax.googleleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.9.1/jquery.-validate.js"></script>
-<script src="{{ asset('js/product-edit-iamges.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js\product-images.js') }}" type="text/javascript"></script>
 @endsection
