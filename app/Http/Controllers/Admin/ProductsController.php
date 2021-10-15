@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -46,5 +47,10 @@ class ProductsController extends Controller
         ProductImagesService::attach ($product, $images);
       
         return redirect()->route('admin/products');
+   }
+
+   public function update(UpdateProductRequest $request, Product $product) 
+   {
+
    }
 }
