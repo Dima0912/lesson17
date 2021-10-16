@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -52,4 +52,13 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth', 
 
 
 Route::namespace('Account')->prefix('account')->name('account.')->middleware(['auth'])->group(function () {
+});
+
+Route::middleware('auth')->group(function() {
+
+    Route::get('cart', 'CartController@index')->name('cart');
+    Route::post('cart/{product}/add', 'CartController@add')->name('cart.add');
+    Route::post('cart/{product}/delete', 'CartController@delete')->name('cart.delete');
+    Route::post('cart/{product}/count/update', 'CartController@countUpdate')->name('cart/count.update');
+
 });
