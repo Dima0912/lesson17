@@ -9,7 +9,7 @@ class CartController extends Controller
 {
     public function index(Product $product) 
     {
-        return view('cart/view');
+        return view('cart/index');
     }
 
     public function add(Product $product)

@@ -29,7 +29,33 @@
                 </tbody>
             </table>
             @else
-            <h3 class="text-center">There are no products ib cart</h3>
+            <h3 class="text-center">There are no products in cart</h3>
+            @endif
+            <hr>
+            <table class="table table-dark" style="...">
+        <tbody>
+            <tr>
+                <td colspan="2">&nbsp</td>
+                <td>Subtotal</td>
+                <td>{{ Cart::subtotal() }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">&nbsp</td>
+                <td>Tax</td>
+                <td>{{ Cart::tax() }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">&nbsp</td>
+                <td>Total</td>
+                <td>{{ Cart::total() }}</td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+        <div class="col-md-12 text-right">
+
+           
         </div>
     </div>
 </div>
+@endsection
