@@ -3,27 +3,48 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+
 
 class CartController extends Controller
 {
-    public function index(Product $product) 
+    public function index(Product $product)
     {
         return view('cart/index');
     }
 
-    public function add(Product $product)
+    public function add(Request $request, Product $product)
     {
+        // dd($request);
+        Cart::instance('cart')->add(
+            $product->id,
+            $product->title,
+            $request->product_count,
+            $product->getPrice()
+        );
 
+        return redirect()->back()->with(['status' => 'The product was added into the cart']);
     }
 
-    public function delete(Product $product)
+    public function delete(Request $request)
     {
-
+       
+      Cart::instance('cart')->remove($request->rowId);
+      return redirect()->back();
     }
 
-    public function contUpdate(Product $product)
+    public function countUpdate(Request $request, Product $product)
     {
-
+        if ($product->in_stock < $request->product_count) {
+            return redirect()
+            ->back()
+            ->with(["status" => "The product [{$product->title}] has only {$product->in_stock} items"]);
+        }
+        Cart::instance('cart')->update(
+            $request->rowId,
+            $request->product_count
+        );
+        return redirect()->back();
     }
 }

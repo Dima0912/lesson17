@@ -58,8 +58,8 @@ Route::middleware('auth')->group(function() {
 
     Route::get('cart', 'CartController@index')->name('cart');
     Route::post('cart/{product}/add', 'CartController@add')->name('cart.add');
-    Route::post('cart/{product}/delete', 'CartController@delete')->name('cart.delete');
-    Route::post('cart/{product}/count/update', 'CartController@countUpdate')->name('cart/count.update');
+    Route::post('cart/product/delete', 'CartController@delete')->name('cart.delete');
+    Route::post('cart/{product}/count/update', 'CartController@countUpdate')->name('cart.count.update');
 
     // Route::get('checkout', 'CheckoutController')->name('checkout');
 

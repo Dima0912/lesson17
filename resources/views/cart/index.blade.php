@@ -7,13 +7,6 @@
             <h3 class="text-center">{{ __('Cart') }}</h3>
         </div>
         <div class="col-md-12">
-            @if (session('status'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('status') }}
-            </div>
-            @endif
-        </div>
-        <div class="col-md-12">
             @if(Cart::instance('cart')->count() > 0)
             <table class="table table-light">
                 <thead>

@@ -22,7 +22,7 @@
         <p>Reting: {{ $product->averageRating}}</p>
         <hr>
         <div>
-            <p>Product Category: <b>{{ $product->category }}</b></p>
+            <p>Product Category: <b>{{ $product->category->name }}</b></p>
         </div>
         @auth
         @if($product->in_stock > 0)
