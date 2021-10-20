@@ -66,7 +66,7 @@ class ProductsController extends Controller
         $images = $product->gallery()->get();
         if($images->count() > 0) {
             $product->gallery()->detach();
-            $images->each()->delete();
+            $images->each  ->delete();
         }
         $product->delete();
 
