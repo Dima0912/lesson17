@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -47,7 +48,17 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth', 
         Route::get('products/new', 'ProductsController@create')->name('.create');
         Route::post('products', 'ProductsController@store')->name('.store');
     });
+
+    Route::name('categories')->group(function () {
+        Route::get('categories', 'CategoriesController@index');
+        Route::get('categories/{category}/edit', 'CategoriesController@edit')->name('.edit');
+        Route::put('categories/{category}/update', 'CategoriesController@update')->name('.update');
+        Route::get('categories/new', 'CategoriesController@create')->name('.create');
+        Route::post('categories', 'CategoriesController@store')->name('.store');
+        
+    });
 });
+
 
 
 

@@ -11,9 +11,9 @@
 <div class="row">
     <div class="col-md-6">
       
-        @if(Storage::has($product->thumbnail))
-        <img src="{{ Storage::has($product->thumbail) }}" class="card-img-top" style="width: 200px; height: 300px; margin: 0 auto; display:block;">
-        @endif
+        
+        <img src="{{ ($product->thumbail) }}" class="card-img-top" style="width: 200px; height: 300px; margin: 0 auto; display:block;">
+       
     </div>
     <div class="col-md-6">
         <p>Price: {{ $product->getPrice() }}$</p>

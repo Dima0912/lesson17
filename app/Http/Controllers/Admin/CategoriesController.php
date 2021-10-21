@@ -11,11 +11,13 @@ class CategoriesController extends Controller
     public function index()
     {
       $categories = Category::query()->withCount('products')->get();
+
+      return view('admin/categories/index', compact('categories'));
     }
 
     public function create()
     {
-        return view('admin.categories.new', compact('categories'));
+        return view('admin.categories.new');
     }
 
     public function store(Category $category, Request $request)

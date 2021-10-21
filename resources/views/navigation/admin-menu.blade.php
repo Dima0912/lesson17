@@ -23,6 +23,14 @@
                     <a class="dropdown-item" href="{{ route('admin.products.create') }}">{{ __('New Product') }}</a>
                 </div>
              </li>
+             <li class="nav-item dropdown">
+                <a id="adminDropdownProducts" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" {{__('Category') }} <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu droppdown-menu-left" aria-labelledby="adminDropdownProducts">
+                    <a class="dropdown-item" href="{{ route('admin.categories') }}">{{ __('Category List') }}</a>
+                    <a class="dropdown-item" href="{{ route('admin.categories.create') }}">{{ __('New Category') }}</a>
+                </div>
+             </li>
          </ul>
      </div>
   </div>
