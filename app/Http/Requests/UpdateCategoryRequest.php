@@ -24,7 +24,7 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:50'], $this->category->id,
+            'name' => ['required', 'string', 'max:50'],
             'description' => ['string', 'min:20']
         ];
     }
