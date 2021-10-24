@@ -53,6 +53,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth', 
         Route::get('categories', 'CategoriesController@index');
         Route::get('categories/{category}/edit', 'CategoriesController@edit')->name('.edit');
         Route::put('categories/{category}/update', 'CategoriesController@update')->name('.update');
+        Route::delete('categories/{category}', 'CategoriesController@destroy')->name('.delete');
         Route::get('categories/new', 'CategoriesController@create')->name('.create');
         Route::post('categories', 'CategoriesController@store')->name('.store');
         

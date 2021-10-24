@@ -25,8 +25,12 @@
                                         <td class="text-center"> {{$category->products_count }}</td>
                                         <td class="text-center" scope="col">
                                             <a href="{{ route('admin.categories.edit', $category)}}" class="bth btn-info form-control">Edit</a>
+                                            <form action="{{ route('admin.categories.delete', $category) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="submit" class="btn btn-danger form-control" value="Remove">
                                             </form>
-                                           
+
                                         </td>
                                     </tr>
                                     @endforeach

@@ -35,10 +35,11 @@
                             </td>
                             <td class="text-center" scope="col">
                             <a href="{{ route('admin.products.edit', $product)}}" class="bth btn-info form-control">Edit</a>
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" class="btn-danger form-control" value="Remove">
-                            </form>
+                            <form action="{{ route('admin.products.delete', $product) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-danger form-control" value="Remove">
+                                    </form>
                             <a href="{{ route('products.show', $product) }}" class="btn btn-outline-success form-control">View</a>
                             </td> 
                     </tr>

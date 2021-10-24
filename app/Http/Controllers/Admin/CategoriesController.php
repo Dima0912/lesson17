@@ -40,4 +40,11 @@ class CategoriesController extends Controller
     {
       if($category->update($request->validated())) return redirect()->route('admin.categories')->with('status', 'Категория обновлена');
     }
+
+    public function destroy(Category $category) {
+
+      $category->delete();
+      return redirect()->back()->with('status', 'Категория успешно удалена');
+
+    }
 }
