@@ -42,7 +42,6 @@ class CategoriesController extends Controller
     }
 
     public function destroy(Category $category) {
-
       $category->delete();
       return redirect()->back()->with('status', 'Категория успешно удалена');
 

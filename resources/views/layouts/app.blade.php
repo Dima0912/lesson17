@@ -76,9 +76,9 @@
             </div>
         </nav>
         @include('navigation.front-menu')
-        @if(is_admin(Auth::user()) && (Request::is('admin/*') || Request::is('admin')))
+        @if(Auth::check() && is_admin(Auth::user()) && (Request::is('admin/*') || Request::is('admin')))
            @include('navigation.admin-menu')
-        @endif
+       @endif
     
         <main class="py-4">
         <div class="container">

@@ -46,7 +46,7 @@ class ProductsController extends Controller
         $product = $category->products()->create($fields);
         ProductImagesService::attach($product, $images);
 
-        return redirect()->route('admin/products');
+        return redirect()->route('admin.products');
     }
 
     public function update(UpdateProductRequest $request, Product $product)
