@@ -37,7 +37,7 @@ class ProductImagesServiceTest extends TestCase
         $this->assertEquals(2, $this-> product->gallery()->count());
     }
 
-    public function test_attach_if_iamges_are_empty()
+    public function test_attach_if_images_are_empty()
     {
         
         $this->setUpVariables();
