@@ -23,11 +23,20 @@ class CategoriesControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
+
+    public function test_create()
+    {
+       $response = $this->get('admin.categories.new');
+       $response->assertStatus(404);
+    }
+
     public function test_store()
     {
-        
-$categories = Category::query()->create()->first();
-$route = route('admin.categories');
-$response = $this->post($route);
+
+        $category = Category::factory(1)->create();
+        $response = $this->get('admin.categories');
+        $response->assertStatus(404);
+      
     }
+
 }

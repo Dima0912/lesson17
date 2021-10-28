@@ -34,7 +34,7 @@ class ProductImagesServiceTest extends TestCase
 
         ProductImagesService::attach($this->product, $this->images);
 
-        $this->assertEquals(2, $this-> product->gallery()->count());
+        $this->assertEquals(2, $this->product->gallery()->count());
     }
 
     public function test_attach_if_images_are_empty()
@@ -45,6 +45,6 @@ class ProductImagesServiceTest extends TestCase
 
         ProductImagesService::attach($this->product, []);
 
-        $this->assertEquals(0, $this-> product->gallery()->count());
+        $this->assertEquals(0, $this->product->gallery()->count());
     }
 }
