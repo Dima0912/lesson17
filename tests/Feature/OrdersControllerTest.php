@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 class OrdersControllerTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -24,8 +25,7 @@ class OrdersControllerTest extends TestCase
     public function test_edit()
     {
         $product = Order::paginate(10);
-        $response = $this->get('orders/edit');
-        $response = $this->post('user');
+        $response = $this->get('orders/edit');;
         $response->assertStatus(404);
     }
 }

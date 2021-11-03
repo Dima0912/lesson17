@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class ProductsControllerTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -32,7 +33,7 @@ class ProductsControllerTest extends TestCase
     }
     public function test_store()
     {
-        $response = $this->get('admin.categories');
-        $response->assertStatus(404);
+        $response = $this->get('admin/products');
+        $response->assertStatus(302);
     }
 }
