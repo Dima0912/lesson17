@@ -25,7 +25,7 @@ class OrdersControllerTest extends TestCase
     public function test_edit()
     {
         $product = Order::paginate(10);
-        $response = $this->get('orders/edit');;
-        $response->assertStatus(404);
+        $response = $this->get('admin/orders');;
+        $response->assertStatus(302);
     }
 }

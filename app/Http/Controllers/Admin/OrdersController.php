@@ -20,6 +20,6 @@ class OrdersController extends Controller
     public function edit(Order $order)
     {
         $products = $order->products()->get();
-        return view('admin/orders/show', compact('order', 'products'));
+        return view('admin/orders/edit', compact('order', 'products'));
     }
 }

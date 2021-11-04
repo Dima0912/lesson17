@@ -72,7 +72,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        d(__METHOD__, $request, $user);
+        dd(__METHOD__, $request, $user);
     }
 
     /**
