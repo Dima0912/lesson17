@@ -26,8 +26,20 @@ class CartControllerTest extends TestCase
 
    public function test_index()
    {
-       $responce = $this->get('cart/index');
+       $responce = $this->get('cart');
+       $responce->assertStatus(302);
+   }
 
-       $responce->assertStatus(404);
+   public function test_add()
+   {
+    $this->setUpVariables();
+    $cart = Cart::instance('cart');
+    $route = route('cart');
+    $response = $this->from('/cart.add')->post($route, [
+        'id' => '2',
+        'title' => 'aut'
+    ]);
+    $response->assertStatus(405);
+    
    }
 }
