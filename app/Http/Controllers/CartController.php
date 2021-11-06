@@ -16,7 +16,6 @@ class CartController extends Controller
 
     public function add(Request $request, Product $product)
     {
-        // dd($request);
         Cart::instance('cart')->add(
             $product->id,
             $product->title,
