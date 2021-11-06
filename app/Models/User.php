@@ -58,4 +58,14 @@ class User extends Authenticatable
         
         return $this->role->name === config('constants.db.roles.admin');
     }
+
+    public function instanceCartName()
+    {
+        $userName = [
+            $this->id,
+            $this->surname
+        ];
+
+        return implode('_', $userName);
+    }
 }
