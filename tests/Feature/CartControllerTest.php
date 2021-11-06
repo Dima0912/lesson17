@@ -40,4 +40,5 @@ class CartControllerTest extends TestCase
         'product_count' => '2',
     ]);
     $response->assertStatus(302);
+   }
 }
