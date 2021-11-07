@@ -16,12 +16,14 @@ class CartController extends Controller
 
     public function add(Request $request, Product $product)
     {
-        Cart::instance('cart')->add(
+       $cartItem = Cart::instance('cart')->add(
             $product->id,
             $product->title,
             $request->product_count,
             $product->getPrice()
         );
+
+        $cartItem->associate(\App\Models\Product::class);
 
         return redirect()->back()->with(['status' => 'The product was added into the cart']);
     }
